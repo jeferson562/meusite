@@ -1,0 +1,240 @@
+ body {
+     background-image: url(img/back.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     background-attachment: fixed;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     color: #f0f0f0;
+     margin: 0;
+     padding: 40px 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+ }
+
+ .minha-tabela {
+     border: 2px solid #000000;
+     width: 100%;
+     max-width: 900px;
+     border-collapse: collapse;
+     background-color: #242438;
+     border: 3px solid #15086b;
+     border-radius: 8px;
+     overflow: hidden;
+     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+ }
+
+ .minha-tabela tr,
+ .minha-tabela td {
+     padding: 12px 16px;
+     border: 1px solid #383856;
+ }
+
+ .minha-tabela,
+ .tabela.titulo {
+     background: linear-gradient(90deg, #e0d8d8, #e3d8d6);
+     color: #1e1e2f;
+     font-size: 20px;
+     font-weight: bold;
+     text-align: center;
+     padding: 18px;
+     letter-spacing: 2px;
+     border-bottom: 3px solid #ff758c;
+ }
+
+ .minha-tabela thead tr:not(:first-child) th {
+     background-color: #2e2e48;
+     color: #ece7e7;
+     font-weight: bold;
+     text-transform: uppercase;
+ }
+
+ .minha-tabela th {
+     font-size: 1.8rem;
+     font-weight: 300;
+     text-transform: uppercase;
+     letter-spacing: 8px;
+     color: #e40c0c;
+     text-shadow:
+         0 0 6px rgba(255, 255, 255, 0.35),
+         0 0 18px rgba(0, 200, 255, 0.55),
+         0 0 40px rgba(0, 200, 255, 0.35);
+     animation: pulsar-texto 3s ease-in-out infinite;
+ }
+
+ /*Linha em baixo do título*/
+ .tabela-titulo::after {
+     content: "";
+     display: block;
+     width: 120px;
+     height: 2px;
+     margin: 14px auto 0;
+     background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+ }
+
+ /* Pulsa só o brilho do texto, sem apagar o fundo da célula */
+ @keyframes pulsar-texto {
+
+     0%,
+     100% {
+         text-shadow:
+             0 0 6px rgba(255, 255, 255, 0.35),
+             0 0 18px rgba(0, 200, 255, 0.55),
+             0 0 40px rgba(0, 200, 255, 0.35);
+     }
+
+     50% {
+         text-shadow:
+             0 0 3px rgba(255, 255, 255, 0.2),
+             0 0 8px rgba(0, 200, 255, 0.3),
+             0 0 16px rgba(0, 200, 255, 0.15);
+     }
+ }
+
+ @media (prefers-reduced-motion: reduce) {
+     .tabela-titulo {
+         animation: none;
+     }
+ }
+
+ /*Fundo com foto da cidade*/
+ tbody tr {
+     background-color: #fff;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
+     transition: color 0.3s ease;
+ }
+
+ /*deixa as células trasnparente*/
+ tbody tr td {
+     background: transparent;
+ }
+
+ tbody tr:hover {
+     background-color: #0f1a24;
+     background-image:
+         linear-gradient(rgba(10, 20, 30, 0.7), rgba(10, 20, 30, 0.7)),
+         var(--cidade);
+     background-repeat: no-repeat;
+     background-position: center var(--pos, 47%);
+     background-size: cover;
+     color: #fff;
+ }
+
+ /*Foto de cada cidade*/
+ .cidade-saoluiz {
+     --cidade: url("img/brasaoslg.jpg");
+ }
+
+ .cidade-saopaulo {
+     --cidade: url("img/brasaosp.jpg");
+ }
+
+ .cidade-taubate {
+     --cidade: url("img/brasaotaubate.jpg");
+ }
+
+ .cidade-caxiasdosul {
+     --cidade: url("img/brasaocaxias.png");
+ }
+
+ .cidade-pitangui {
+     --cidade: url("img/brasaopitangui.jpg");
+ }
+
+ .cidade-valedosol {
+     --cidade: url("img/brasaovalesol.png");
+ }
+
+ .cidade-blumenau {
+     --cidade: url("img/brasaoblu.png");
+ }
+
+ .cidade-garruchos {
+     --cidade: url("img/brasaogar.jpg");
+ }
+
+ .cidade-belem {
+     --cidade: url("img/brasaobelem.jpg");
+ }
+
+ .minha-tabela td {
+     padding: 16px;
+     height: 180px;
+     /*altura da faixa*/
+     vertical-align: middle;
+ }
+
+ .link-voltar {
+    position: fixed;
+    top:20px;
+    left: 20px;
+    z-index: 10;
+    padding: 10px 26px;
+    background: rgba(0, 200, 255, 0.15);
+    color: #eaf8ff;
+    border: 1px solid #00c8ff;
+    border-radius: 24px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 14px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.35);
+    transition:  background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+ }
+
+ .link-voltar:hover {
+     background: rgba(0, 200, 255, 0.35);
+     transform: translateY(-2px);
+     box-shadow: 0 0 20px rgba(0, 200, 255, 0.6);
+ }
+
+ /*CSS para mudar o link da cidade*/
+ .link-cidade {
+    position:relative;
+    display: inline-block;
+    padding: 6px 14px 6px 30px;
+    color: #eaf8ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    background: rgba(0, 200, 255, 0.12);
+    border: 1px solid rgba(0, 200, 255, 0.45);
+    border-radius: 20px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+ }
+
+ /*Ícone de localização*/
+ .link-cidade::before {
+    content: "📍";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+ }
+ .link-cidade:hover {
+    background: rgba(0, 200, 255, 0.3);
+    box-shadow: 0 0 14px rgba(0, 200, 255, 0.5);
+    transform: translateY(-2px);
+ }
+ /*Botão do som*/
+ #btn-som {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 10px 22px;
+    background: rgba(0, 200, 255, 0.15);
+    color: #eaf8ff;
+    border: 1px solid #00c8ff;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(6px);
+    transition: background-color 0.2s ease;
+ }
+ #btn-som:hover {background: rgba(0, 200, 255, 0.35);}

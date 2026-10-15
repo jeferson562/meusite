@@ -1,0 +1,288 @@
+  /* Estilos Gerais e Reset */
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+      background-color: #9fe6ce;
+      color: #333;
+      padding: 40px 20px;
+      background-image: url(img/fundo.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      cursor: pointer;
+  }
+
+  h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      /*color: #dd1111fe;*/
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: 8px;
+      color: #eaf8ff;
+      text-shadow:
+          0 0 6px rgba(255, 255, 255, 0.35),
+          0 0 18px rgba(0, 200, 255, 0.55),
+          0 0 40px rgba(0, 200, 255, 0.35);
+      animation: pulsar 3s ease-in-out infinite;
+  }
+
+  /* Linha decorativa embaixo do título */
+h1::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+}
+
+  /* O @keyframes fica FORA do h1, logo abaixo */
+  @keyframes pulsar {
+
+      0%,
+      100% {
+          opacity: 1;
+      }
+
+      50% {
+          opacity: 0.75;
+      }
+  }
+
+  /* Opcional: desliga a animação para quem prefere menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+      h1 {
+          animation: none;
+      }
+  }
+
+
+  /* Container Centralizado da Tabela */
+  .tabela-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: default;
+  }
+
+  /* Estilização da Tabela */
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+  }
+
+  th,
+  td {
+      padding: 15px;
+      border-bottom: 1px solid #e0e0e0;
+      vertical-align: middle;
+  }
+
+  th {
+      background-color: #1a252f;
+      color: #ffffff;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+  }
+
+  tr:hover {
+      background-color: #f9fbfb;
+  }
+
+  /* Estilização das imagens(150x150) */
+  .thumbnail {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: block;
+      margin: 0 auto;
+      /* Centraliza a foto na célula */
+  }
+
+  .thumbnail:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Estilização dos Textos da Tabela */
+  .carro-modelo {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 16px;
+  }
+
+  .carro-preco {
+      color: #27ae60;
+      font-weight: bold;
+      font-size: 16px;
+  }
+
+  .btn-ver {
+      display: inline-block;
+      width: 130px;
+      padding: 9px 0;
+      text-align: center;
+      white-space: nowrap;
+      background-color: #34495e;
+      color: #ede7e7;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: backgraound-color 0.2s ease;
+
+      /*box-sizing: border-box;
+      white-space: nowrap;*/
+  }
+
+  .btn-ver:hover {
+      background-color:#00a8d6;
+  }
+
+  /* Efeito de Zoom (Lightbox) em CSS Puro */
+  .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+  }
+
+  /* Ativa o Lightbox quando clicado (URL contendo #id) */
+  .lightbox:target {
+      opacity: 1;
+      pointer-events: auto;
+  }
+
+  .lightbox img {
+      max-width: 85%;
+      max-height: 85%;
+      border: 4px solid #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Botão para fechar o Zoom */
+  .close-lightbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: transparent;
+      cursor: default;
+  }
+
+  /*CSS da parte das imagens de fundo*/
+  /* Base: a linha precisa ser posicionada para receber o logo */
+
+  tbody tr {
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      transition: color 0.3s ease;
+  }
+
+  /* As células precisam ser transparentes para o fundo da linha aparecer */
+  tbody tr td {
+      background: transparent;
+  }
+
+  /* Ao passar o mouse: véu branco por cima do logo (controla a intensidade) + logo */
+ tbody tr:hover {
+    background-image:
+        linear-gradient(rgba(10, 20, 30, 0.85), rgba(10, 20, 30, 0.85)),
+        var(--logo);
+}
+/*Texto fica claro quando o logo aparece*/
+tbody tr:hover .carro-modelo { color: #ffffff; }
+tbody tr:hover small         { color: #b9cbd8; }
+tbody tr:hover .carro-preco  { color: #4be08a; }
+  /* Logos de cada marca */
+  /*.marca-chevrolet {
+      background-image: url("img/logoGM.jpg");
+  }*/
+  .marca-chevrolet {--logo: url("img/logoGM.jpg");} /*background-image: url("img/logoGM.jpg");*/
+
+  .marca-vw {--logo: url("img/logoVW.jpg");}
+
+  .marca-fiat {--logo: url("img/logoFiat.jpg");}
+
+  .marca-toyota {--logo: url("img/logoToyota.jpg");}
+
+  .marca-citroen {--logo: url("img/logoCitroen.jpg");}
+
+  .marca-renault {--logo: url("img/logoRenault.jpg");}
+
+  /*SOM*/
+
+  #btn-som {
+     display: block;
+    margin: 0 auto 20px;
+    padding: 8px 18px;
+    background: rgba(0, 200, 255, 0.15);
+    color: #eaf8ff;
+    border: 1px solid #00c8ff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  #btn-som:hover { background: rgba(0, 200, 255, 0.3); }
+
+  /*Css do link das páginas*/
+  .link-voltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #15086b;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .link-voltar:hover {
+    text-decoration: underline;
+  }
+
+  /*css do botão da página*/
+  .btn-pagina {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 24px; /*cetraliza abaixo do título*/
+    padding: 10px 26px;
+    background: rgba(0, 200, 255, 0.15);
+    color: #f8fbfc;
+    border-radius: 1px solid #00c8ff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 14px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-pagina:hover {
+    background: rgba(0, 200, 255, 0.35);
+    transform: translateY(-2px);
+  }
